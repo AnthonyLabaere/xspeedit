@@ -11,6 +11,8 @@ export class BoxDTO {
 
 export class SupplyChainDTO {
   id: number;
+  initialArticlesSizes: number;
+  boxesCapacity: number;
   boxes: BoxDTO[];
 }
 

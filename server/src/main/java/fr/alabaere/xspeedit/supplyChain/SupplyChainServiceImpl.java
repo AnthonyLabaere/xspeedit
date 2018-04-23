@@ -1,7 +1,9 @@
 package fr.alabaere.xspeedit.supplyChain;
 
 import fr.alabaere.xspeedit.article.Article;
+import fr.alabaere.xspeedit.box.BoxRepository;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,8 +16,19 @@ import java.util.stream.Collectors;
 @Service(value = "supplyChainService")
 public class SupplyChainServiceImpl implements SupplyChainService {
 
+    private ModelMapper modelMapper;
+
+    public SupplyChainServiceImpl() {
+        modelMapper = new ModelMapper();
+    }
+
     @Resource
     private SupplyChainRepository supplyChainRepository;
+
+    @Override
+    public List<SupplyChainDTO> getAll() {
+        return modelMapper.map(new ArrayList<>(supplyChainRepository.findAll()), new TypeToken<List<SupplyChainDTO>>() {}.getType());
+    }
 
     @Override
     public SupplyChainDTO optimizeArticlesIntoBoxes(OptimizeParameter parameter) {
@@ -28,7 +41,7 @@ public class SupplyChainServiceImpl implements SupplyChainService {
             // TODO : gestion des exceptions fonctionnelles
         }
 
-        SupplyChain supplyChain = new SupplyChain(boxesCapacity);
+        SupplyChain supplyChain = new SupplyChain(articleSizes, boxesCapacity);
 
         List<Article> articles = articleSizes.chars()
                 .mapToObj(i -> Character.getNumericValue((char)i))
@@ -43,7 +56,6 @@ public class SupplyChainServiceImpl implements SupplyChainService {
 
         supplyChainRepository.save(supplyChain);
 
-        ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(supplyChain, SupplyChainDTO.class);
     }
 }

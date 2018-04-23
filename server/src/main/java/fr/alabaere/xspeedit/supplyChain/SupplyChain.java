@@ -1,6 +1,5 @@
 package fr.alabaere.xspeedit.supplyChain;
 
-import fr.alabaere.xspeedit.article.Article;
 import fr.alabaere.xspeedit.box.Box;
 import lombok.*;
 
@@ -20,6 +19,8 @@ public class SupplyChain {
     @GeneratedValue
     private Long id;
 
+    private @NonNull String initialArticlesSizes;
+
     private @NonNull Integer boxesCapacity;
 
     @OneToMany(
@@ -29,7 +30,8 @@ public class SupplyChain {
     )
     private List<Box> boxes = new ArrayList<>();
 
-    public SupplyChain (Integer boxesCapacity) {
+    public SupplyChain (String initialArticlesSizes, Integer boxesCapacity) {
+        this.initialArticlesSizes = initialArticlesSizes;
         this.boxesCapacity = boxesCapacity;
     }
 

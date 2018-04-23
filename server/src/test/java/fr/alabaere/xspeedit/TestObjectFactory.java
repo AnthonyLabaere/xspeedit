@@ -24,12 +24,12 @@ public class TestObjectFactory {
         return typeHits;
     }
 
-    public SupplyChain newSupplyChain(Integer boxesCapacity) {
-        return new SupplyChain(boxesCapacity);
+    public SupplyChain newSupplyChain(String initialArticlesSizes, Integer boxesCapacity) {
+        return new SupplyChain(initialArticlesSizes, boxesCapacity);
     }
 
     public SupplyChain newSupplyChain() {
-        return this.newSupplyChain(10);
+        return this.newSupplyChain("", 10);
     }
 
     public Box addBox(SupplyChain supplyChain) {

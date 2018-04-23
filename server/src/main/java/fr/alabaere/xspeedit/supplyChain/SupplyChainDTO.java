@@ -13,5 +13,9 @@ public class SupplyChainDTO {
 
     private Long id;
 
+    private String initialArticlesSizes;
+
+    private Integer boxesCapacity;
+
     private List<BoxDTO> boxes = new ArrayList<>();
 }

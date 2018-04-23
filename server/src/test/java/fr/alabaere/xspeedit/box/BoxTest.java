@@ -23,7 +23,7 @@ public class BoxTest {
     @Before
     public void setUp() {
         box = new Box();
-        box.setSupplyChain(new SupplyChain(BOXES_CAPACITY));
+        box.setSupplyChain(new SupplyChain("", BOXES_CAPACITY));
     }
 
     @Test
