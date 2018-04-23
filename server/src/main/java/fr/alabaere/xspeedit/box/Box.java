@@ -26,7 +26,7 @@ public class Box {
     private SupplyChain supplyChain;
 
     @OneToMany(
-            mappedBy = "tag",
+            mappedBy = "box",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -44,7 +44,7 @@ public class Box {
                 .forEach(article -> {
                     Integer occupancy = occupancy();
 
-                    // TODO : pas terrible
+                    // TODO : à corriger car pas terrible
                     if (article.getSize() <= supplyChain.getBoxesCapacity() - occupancy && occupancy < supplyChain.getBoxesCapacity()) {
                         this.articles.add(article);
                         remainingArticles.remove(article);

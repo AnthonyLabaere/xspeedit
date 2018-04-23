@@ -23,7 +23,7 @@ public class SupplyChain {
     private @NonNull Integer boxesCapacity;
 
     @OneToMany(
-            mappedBy = "tag",
+            mappedBy = "supplyChain",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -35,6 +35,7 @@ public class SupplyChain {
 
     public Box addBox() {
         Box box = new Box();
+        box.setSupplyChain(this);
         boxes.add(box);
         return box;
     }

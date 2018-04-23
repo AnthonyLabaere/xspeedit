@@ -11,5 +11,5 @@ public interface SupplyChainService {
         String articlesSizes;
     }
 
-    SupplyChain optimizeArticlesIntoBoxes(OptimizeParameter parameter);
+    SupplyChainDTO optimizeArticlesIntoBoxes(OptimizeParameter parameter);
 }

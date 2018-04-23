@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class BoxTest {
 
-    private final static Integer BOXES_CAPACITIES = 10;
+    private final static Integer BOXES_CAPACITY = 10;
 
     private final static String ARTICLE_SIZES_1 = "163841689525773";
     private final static String ARTICLE_SIZES_2 = "12345";
@@ -23,7 +23,7 @@ public class BoxTest {
     @Before
     public void setUp() {
         box = new Box();
-        box.setSupplyChain(new SupplyChain(BOXES_CAPACITIES));
+        box.setSupplyChain(new SupplyChain(BOXES_CAPACITY));
     }
 
     @Test

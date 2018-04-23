@@ -15,7 +15,7 @@ public class SupplyChainController {
 
     @PostMapping("/optimize")
     @CrossOrigin(origins = "http://localhost:4200")
-    public SupplyChain optimize(@RequestBody SupplyChainService.OptimizeParameter parameter) {
+    public SupplyChainDTO optimize(@RequestBody SupplyChainService.OptimizeParameter parameter) {
         return service.optimizeArticlesIntoBoxes(parameter);
     }
 }

@@ -1,19 +1,24 @@
 package fr.alabaere.xspeedit.supplyChain;
 
 import fr.alabaere.xspeedit.article.Article;
-import org.springframework.validation.annotation.Validated;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
-import javax.validation.Validation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Transactional
+@Service(value = "supplyChainService")
 public class SupplyChainServiceImpl implements SupplyChainService {
 
+    @Resource
+    private SupplyChainRepository supplyChainRepository;
+
     @Override
-    public SupplyChain optimizeArticlesIntoBoxes(OptimizeParameter parameter) {
+    public SupplyChainDTO optimizeArticlesIntoBoxes(OptimizeParameter parameter) {
         // TODO : vérification paramètres non null
 
         Integer boxesCapacity = parameter.getBoxesCapacity();
@@ -36,6 +41,9 @@ public class SupplyChainServiceImpl implements SupplyChainService {
             remainingArticles = supplyChain.addBox().fillWithArticles(remainingArticles);
         }
 
-        return supplyChain;
+        supplyChainRepository.save(supplyChain);
+
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(supplyChain, SupplyChainDTO.class);
     }
 }
