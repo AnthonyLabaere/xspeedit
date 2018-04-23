@@ -41,7 +41,7 @@ public class SupplyChainServiceImpl implements SupplyChainService {
             remainingArticles = supplyChain.addBox().fillWithArticles(remainingArticles);
         }
 
-        supplyChainRepository.save(supplyChain);
+//        supplyChainRepository.save(supplyChain);
 
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(supplyChain, SupplyChainDTO.class);
