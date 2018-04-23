@@ -20,7 +20,6 @@ public class Article {
     private @NonNull Integer size;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("id")
     private Box box;
 
     public Article (Integer size) {

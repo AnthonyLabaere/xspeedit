@@ -21,7 +21,6 @@ public class Box {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("id")
     private SupplyChain supplyChain;
 
     @OneToMany(
