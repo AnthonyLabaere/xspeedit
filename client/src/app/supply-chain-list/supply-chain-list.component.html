@@ -1,12 +1,13 @@
 <mat-card>
-  <mat-card-header>Supply Chain List</mat-card-header>
+  <mat-card-header>
+    <span>Supply Chain List</span><button mat-fab color="primary" [routerLink]="['/supply-chain-add']">Add</button>
+  </mat-card-header>
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let supplyChain of supplyChains">
-        {{supplyChain.initialArticlesSizes}} ({{supplyChain.boxesCapacity}}) : <span *ngFor="let box of supplyChain.boxes">[<span *ngFor="let article of box.articles">{{article.size}}</span>,]</span>
+          <mat-card>{{supplyChain.initialArticlesSizes}} ({{supplyChain.boxesCapacity}})</mat-card>
+          <mat-card *ngFor="let box of supplyChain.boxes"><span *ngFor="let article of box.articles; let last = last">{{article.size}}<span *ngIf="!last">,</span></span></mat-card>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
-
-  <button mat-fab color="primary" [routerLink]="['/supply-chain-add']">Add</button>
 </mat-card>
