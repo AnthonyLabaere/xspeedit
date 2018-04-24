@@ -1,7 +1,7 @@
 mat-card-header {
   padding-bottom: 20px;
 }
-mat-card-header > span {
+mat-card-header > h2 {
   display: flex;
   align-items: center;
   justify-content: center;

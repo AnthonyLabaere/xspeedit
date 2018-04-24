@@ -5,11 +5,11 @@
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
-        <input matInput placeholder="Boxes capacity" [(ngModel)]="parameter.boxesCapacity"
+        <input matInput type="number" placeholder="Boxes capacity" [(ngModel)]="parameter.boxesCapacity"
                required name="boxesCapacity" #boxesCapacity>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Articles sizes" [(ngModel)]="parameter.articlesSizes"
+        <input matInput type="number" placeholder="Articles sizes" [(ngModel)]="parameter.articlesSizes"
                required name="articlesSizes" #articlesSizes>
       </mat-form-field>
     </mat-card-content>
