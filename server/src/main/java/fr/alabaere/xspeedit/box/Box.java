@@ -44,6 +44,7 @@ public class Box {
 
                     // TODO : à corriger car pas terrible
                     if (article.getSize() <= supplyChain.getBoxesCapacity() - occupancy && occupancy < supplyChain.getBoxesCapacity()) {
+                        article.setBox(this);
                         this.articles.add(article);
                         remainingArticles.remove(article);
                     }

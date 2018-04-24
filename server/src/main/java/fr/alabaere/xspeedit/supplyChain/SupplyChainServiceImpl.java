@@ -27,6 +27,7 @@ public class SupplyChainServiceImpl implements SupplyChainService {
 
     @Override
     public List<SupplyChainDTO> getAll() {
+        // TODO : faire un TU pour voir d'où vient le problème
         return modelMapper.map(new ArrayList<>(supplyChainRepository.findAll()), new TypeToken<List<SupplyChainDTO>>() {}.getType());
     }
 
